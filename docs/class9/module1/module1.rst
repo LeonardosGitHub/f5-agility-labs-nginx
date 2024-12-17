@@ -178,14 +178,13 @@ Create claims for the Oauth/OIDC communication
 
 10. Click Save at the bottom of the screen
 
-Create the client application (Nginx-Plus) for the Oauth/OIDC communication
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Create the client application which is NGINX Plus in this lab
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 11. 
 
 Create the JWT Key configuration for the Oauth/OIDC communication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 Create the OAuth profile for the Oauth/OIDC communication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -196,78 +195,6 @@ Create Local User database for the Oauth/OIDC communication
 Create Local User for the Oauth/OIDC communication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-============== OLD BELOW =========================
-Create a Keycloak client for NGINX Plus in the Keycloak GUI:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-5. In the left navigation column, click 'Clients'. 
-
-.. image:: ../images/keycloak_click_clients.png
-		
-6. On the Clients page that opens, click the 'Create' button in the upper right corner.
-		
-.. image:: ../images/keycloak_click_create.png
-				
-7. On the Add Client page that opens enter the below values then click the 'Save' button.
-
-**Client ID – appworld2024**
-
-**Client Protocol – openid-connect**
-
-.. image:: ../images/ualab08.jpg
-
-8. On the appworld2024 clients page that opens, enter or select the values below on the Settings tab, then scroll down and click 'Save':
-
-.. attention::
-   You will need to carefully type in the URI below, as it's not possible to paste into the Firefox container
-   Also, note that there is an underscore before 'codexch' in the path
-
-**Client ID - appworld2024**
-		
-**Access Type – confidential**
-
-**Valid Redirect URIs - http://nginxdemo.f5lab.com:8010/_codexch**
-
-.. image:: ../images/ualab09.jpg
-
-.. note::
-	For production, we strongly recommend that you use **SSL/TLS (port 443)**. The port number is **mandatory** even when you’re using the default port for HTTP (80) or HTTPS (443) 
-	Valid Redirect URIs – This is the URI of the NGINX Plus origin web server instance, including the port number, and ending in /_codexch
-
-9. Scroll back up and click the 'Credentials' tab, then copy the value (Ctrl-C) in the 'Secret' field to the Firefox 'Clipboard'.  Next, make a note of it on your local machine (e.g., in notepad) by opening the Firefox 'Clipboard' and copy/pasting the value. You will need this for the NGINX Plus configuration later.
-
-.. image:: ../images/client_secret.jpg
-.. image:: ../images/Firefox_Clipboard.jpg
-	
-10. While still under the appworld2024 Clients page, click the 'Roles' tab, then click the 'Add Role' button in the upper right corner of the page that 
-opens.
-
-.. image:: ../images/keycloak_click_role.jpg
-	
-11. On the 'Add Role' page that opens, type a value in the 'Role Name' field (here it is: nginx-keycloak-role) and click the 'Save' button.
-
-.. image:: ../images/keycloak_save_role.png
-	
-Creating a user in keycloak
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-1. In the left navigation column, click 'Users'. On the Users page that opens, click the 'Add User' button in the upper right corner to create a new user with the Username "user01" (no quotes), then click 'Save'.
-
-.. image:: ../images/keycloak_add_user.png
-	
-2. Once the user is created, click on the 'Credentials' tab at the top of the screen. 
-
-3. Enter the Password appworld2024 and Confirm.
-
-4. Toggle Temporary to OFF, and click 'Set Password' (click yes, you're sure).
-
-.. image:: ../images/keycloak_cred.png
-	
-5. On the management page for the user (here, user01), click the 'Role Mappings' tab. On the page that opens, select appworld2024 on the 'Client 
-Roles' drop‑down menu. Click 'nginx-keycloak-role' in the 'Available Roles' box, then click the 'Add selected' button below the box. The role then appears in the 'Assigned Roles' and 'Effective Roles' boxes, as shown in the screenshot.
-
-.. image:: ../images/keycloak_role_mappings.jpg
 
 Configure NGINX Plus as the OpenID Connect relying party
 ========================================================
