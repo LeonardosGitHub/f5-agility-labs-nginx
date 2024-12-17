@@ -98,35 +98,84 @@ Create a clone of the nginx-openid-connect GitHub repository
    
    **Please do not close the UDF Shell browser tab!**	
 
-Configuring the IdP Keycloak
-============================
+Configuring the BIG-IP APM as an Authorization Server
+=====================================================
    
-.. note:: 
-   These next steps will guide you through creating a keycloak client for NGINX Plus in the Keycloak GUI
+.. note::
+   These next steps will guide you through creating a BIG-IP APM configuration to support Nginx Plus as a client
 
 1. Open your browser tab with the Firefox container from the 'Getting Started' lab section.
 
-2. Login to keycloak (you will need to type the URL below in to the Firefox container).
+2. Navigate to the URL below to login to the BIG-IP (you will need to type the URL below in to the Firefox container).
 
 URL:
-http://idp.f5lab.com:8080
+https://10.1.1.9
 
-3. Click on Administration Console.
+.. note::
+   You'll likely get a TLS warning because we are using a self-signed certificate for management of the BIG-IP. You'll need to click 'Advanced' then 'Accept the Risk and Continue'. Then sign-in using:
 
-.. image:: ../images/keycloak_admin_page.png
+**Username: admin**
+**Password: f5r0x!**
 
-4. Now enter credentials provided below and sign in (if prompted, don't save the password).
+3. Sign in using the BIG-IP username and password above (if prompted, don't save the password).
 
-.. note:: 
-	Username: admin
-	
-	Password: admin
+4. You should be logged into the BIG-IP now, we will mainly be working in the Access tab in the left navigation column
 
-
-.. image:: ../images/ualab07.png
+.. image:: ../images/mod1_apm_config_step2.jpg
    
+Create scopes that will be used during the OIDC Connect communication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. note::
+   You will be creating two scopes: profile and email
+
+5. Navigate to Access > Federation > OAuth Authorization Server > Scope > click the + button or click create
+
+.. image:: ../images/mod1_apm_config_scope1.jpg
+
+6. Configure the profile scope as follows, click repeat when finished
+
+**Name: appworld2025_profile_scope**
+**Scope Name: profile**
+
+.. image:: ../images/mod1_apm_config_scope2.jpg
+
+7. After clicking repeat above, enter in the information for the email scope:
+
+**Name: appworld2025_email_scope**
+**Scope Name: email**
+
+8. Click Finished at the bottom of the screen
+
+Create claims that will be used during the OIDC Connect communication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. note::
+   You will be creating two claims: profile and email
+
+9. Navigate to Access > Federation > OAuth Authorization Server > Claim > click the + button or click create
+
+.. image:: ../images/mod1_apm_config_claim1.jpg
+
+10. Configure the profile claim as follows, click Save when finished
+
+**Name: appworld2025_profile_claim**
+**Claim Name: profile**
+**Claim Value: User profile information here**
+
+.. image:: ../images/mod1_apm_config_claim2.jpg
+
+11. After clicking save above, repeat step 9 and 10 and use the values below
+
+**Name: appworld2025_email_claim**
+**Claim Name: email**
+**Claim Value: %{session.logon.last.logonname}@appworld2025.com**
+
+12. Click Save at the bottom of the screen
+
+============== OLD BELOW =========================
 Create a Keycloak client for NGINX Plus in the Keycloak GUI:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 5. In the left navigation column, click 'Clients'. 
 
 .. image:: ../images/keycloak_click_clients.png
