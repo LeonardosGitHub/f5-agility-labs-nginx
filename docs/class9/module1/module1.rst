@@ -100,15 +100,17 @@ Create a clone of the nginx-openid-connect GitHub repository
 
 Configuring the BIG-IP APM as an Authorization Server
 =====================================================
-   
 .. note::
    These next steps will guide you through creating a BIG-IP APM configuration to support Nginx Plus as a client
+
    You will be using the BIG-IP that you previously opened in the browser
 
 1. Open your browser tab with the BIG-IP GUI from the 'Getting Started' lab section and sign in using the BIG-IP username and password
 
 **Username: admin**
+
 **Password: f5r0x!**
+
 
 .. image:: ../images/mod1_apm_login.jpg
 
@@ -131,6 +133,7 @@ Create scopes for the Oauth/OIDC communication
 
 **Scope Name: profile**
 
+
 .. image:: ../images/mod1_apm_scope_edit.jpg
 
 5. After clicking repeat above (or click create again), enter in the information for the email scope:
@@ -138,6 +141,7 @@ Create scopes for the Oauth/OIDC communication
 **Name: appworld2025_email_scope**
 
 **Scope Name: email**
+
 
 6. Click Finished at the bottom of the screen
 
@@ -158,6 +162,7 @@ Create claims for the Oauth/OIDC communication
 
 **Claim Value: User profile information here**
 
+
 .. image:: ../images/mod1_apm_claim_edit.jpg
 
 9. After clicking save above, repeat step 9 and 10 and use the values below
@@ -165,8 +170,11 @@ Create claims for the Oauth/OIDC communication
    See the Claim Value below, this will automatically populate the email address of the user
 
 **Name: appworld2025_email_claim**
+
 **Claim Name: email**
+
 **Claim Value: %{session.logon.last.logonname}@appworld2025.com**
+
 
 10. Click Save at the bottom of the screen
 
