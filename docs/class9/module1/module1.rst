@@ -137,9 +137,12 @@ Create scopes for the Oauth/OIDC communication
 
 **Caption: profile**
 
+**Click Repeat**
+
+
 .. image:: ../images/mod1_apm_scope_edit.jpg
 
-5. After clicking repeat above (or click create again), enter in the information for the email scope. Be sure to update the fields below:
+5. After clicking repeat above (or click create again), enter in the information for the email scope. Be sure to update all the fields below:
 
 **Name: appworld2025_email_scope**
 
@@ -148,6 +151,7 @@ Create scopes for the Oauth/OIDC communication
 **Caption: email**
 
 **Click Finished**
+
 
 6. Click Finished at the bottom of the screen
 
@@ -168,6 +172,9 @@ Create claims for the Oauth/OIDC communication
 
 **Claim Value: User profile information here**
 
+**Click Save**
+
+
 9. Click Save at the bottom of the screen
 
 .. image:: ../images/mod1_apm_claim_edit.jpg
@@ -184,10 +191,14 @@ Create claims for the Oauth/OIDC communication
 
 **Click Save**
 
+
 11. Click Save at the bottom of the screen
 
 Create the client application which is NGINX Plus in this lab
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. note::
+   This will create a client ID and client secret that will be used in the Nginx Plus configuration 
+
 
 12. Navigate to Access > Federation > OAuth Authorization Server > Client Application > click the + button or click create
 
@@ -209,21 +220,77 @@ Create the client application which is NGINX Plus in this lab
 
 **Click Finished**
 
+
 .. image:: ../images/mod1_apm_clientApp_edit.jpg
 
-Create the JWT Key configuration for the Oauth/OIDC communication
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+14. Click Finished at the bottom of the screen
 
-14. Navigate to Access > Federation > JSON Web Token > Key Configuration > click the + button or click create
+Create the JSON Web Token(JWT) Key configuration for the Oauth/OIDC communication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+15. Navigate to Access > Federation > JSON Web Token > Key Configuration > click the + button or click create
 
 .. image:: ../images/mod1_apm_jwtKey_create.jpg
+
+16. Configure the Key Configurations as follows, click Save when finished
+
+**Name: appworld2025_jwt_key**
+
+**ID: 1021**
+
+**Type: RSA**
+
+**Signing Algorithm: RS256**
+
+**Certificate File: default.crt**
+
+**Certificate Key: default.key**
+
+**Click Save**
+
+
+.. image:: ../images/mod1_apm_jwtKey_edit.jpg
+
+17. Click Save at the bottom of the screen
 
 Create the OAuth profile for the Oauth/OIDC communication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-. Navigate to Access > Federation > OAuth Authorization Server > OAuth Profile > click the + button or click create
+18. Navigate to Access > Federation > OAuth Authorization Server > OAuth Profile > click the + button or click create
 
-.. image:: ../images/mod1_apm_clientApp_create.jpg
+.. image:: ../images/mod1_apm_oauthProfile_create.jpg
+
+19. Configure the OAuth profile as follows, click Save when finished
+
+**Name: appworld2025_oauth_profile**
+
+**Client Application: appworld2025_client_app**
+
+**Click the Custom box on the right hand side of the screen**
+
+**Support Opaque Token: Remove the check box selection**
+
+**Support JWT Token: Select the check box**
+
+**Support OpenID Connect: Select the check box**
+
+**Issuer: https://10.1.10.9**
+
+**JWT Primary Key: Select appworld2025_jwt_key**
+
+**ID Token Primary Key: Select appworld2025_jwt_key**
+
+**JWT Claims: Select both appworld2025_email_claim & appworld2025_profile_claim**
+
+**ID Token Claims: Select both appworld2025_email_claim & appworld2025_profile_claim**
+
+**JWT Refresh Token Encryption Secret: f5r0x!**
+
+**Click Finished**
+
+.. image:: ../images/mod1_apm_jwtKey_edit.jpg
+
+20. Click Finished at the bottom of the screen
 
 
 Create Local User database for the Oauth/OIDC communication
@@ -231,6 +298,10 @@ Create Local User database for the Oauth/OIDC communication
 
 Create Local User for the Oauth/OIDC communication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. attention::
+   
+   **Please do not close the BIG-IP browser tab!**	
 
 
 Configure NGINX Plus as the OpenID Connect relying party
