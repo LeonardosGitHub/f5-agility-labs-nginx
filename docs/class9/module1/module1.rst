@@ -104,6 +104,7 @@ Configuring the BIG-IP APM as an Authorization Server
    These next steps will guide you through creating a BIG-IP APM configuration to support Nginx Plus as a client
 
    You will be using the BIG-IP that you previously opened in the browser
+   
 
 1. Open your browser tab with the BIG-IP GUI from the 'Getting Started' lab section and sign in using the BIG-IP username and password
 
@@ -123,6 +124,7 @@ Create scopes for the Oauth/OIDC communication
 .. note::
    You will be creating two scopes: profile and email
 
+
 3. Navigate to Access > Federation > OAuth Authorization Server > Scope > click the + button or click create
 
 .. image:: ../images/mod1_apm_scope_create.jpg
@@ -133,15 +135,19 @@ Create scopes for the Oauth/OIDC communication
 
 **Scope Name: profile**
 
+**Caption: profile**
 
 .. image:: ../images/mod1_apm_scope_edit.jpg
 
-5. After clicking repeat above (or click create again), enter in the information for the email scope:
+5. After clicking repeat above (or click create again), enter in the information for the email scope. Be sure to update the fields below:
 
 **Name: appworld2025_email_scope**
 
 **Scope Name: email**
 
+**Caption: email**
+
+**Click Finished**
 
 6. Click Finished at the bottom of the screen
 
@@ -154,7 +160,7 @@ Create claims for the Oauth/OIDC communication
 
 .. image:: ../images/mod1_apm_claim_create.jpg
 
-8. Configure the profile claim as follows, click Save when finished
+8. Configure the profile claim as follows
 
 **Name: appworld2025_profile_claim**
 
@@ -162,10 +168,11 @@ Create claims for the Oauth/OIDC communication
 
 **Claim Value: User profile information here**
 
+9. Click Save at the bottom of the screen
 
 .. image:: ../images/mod1_apm_claim_edit.jpg
 
-9. After clicking save above, repeat step 9 and 10 and use the values below
+10. After clicking save above, click create in the top right of GUI, then repeat step 9 and 10 and use the values below
 .. note::
    See the Claim Value below, this will automatically populate the email address of the user
 
@@ -175,19 +182,49 @@ Create claims for the Oauth/OIDC communication
 
 **Claim Value: %{session.logon.last.logonname}@appworld2025.com**
 
+**Click Save**
 
-10. Click Save at the bottom of the screen
+11. Click Save at the bottom of the screen
 
 Create the client application which is NGINX Plus in this lab
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-11. 
+12. Navigate to Access > Federation > OAuth Authorization Server > Client Application > click the + button or click create
+
+.. image:: ../images/mod1_apm_clientApp_create.jpg
+
+13. Configure the client application as follows, click Finished when done
+
+**Name: appworld2025_client_app**
+
+**Application Name: appworld2025 Application**
+
+**Grant Type: Authorization Code/Hybrid**
+
+**Redirect URI(s): https://nginxdemo.f5lab.com:8010/_codexch** *BE SURE TO CLICK ADD
+
+**Support OpenID Connect: Enabled Yes**
+
+**Scopes: move both scopes previously created - appworld2025_email_scope & appworld2025_profile_scope**
+
+**Click Finished**
+
+.. image:: ../images/mod1_apm_clientApp_edit.jpg
 
 Create the JWT Key configuration for the Oauth/OIDC communication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+14. Navigate to Access > Federation > JSON Web Token > Key Configuration > click the + button or click create
+
+.. image:: ../images/mod1_apm_jwtKey_create.jpg
+
 Create the OAuth profile for the Oauth/OIDC communication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+. Navigate to Access > Federation > OAuth Authorization Server > OAuth Profile > click the + button or click create
+
+.. image:: ../images/mod1_apm_clientApp_create.jpg
+
 
 Create Local User database for the Oauth/OIDC communication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
