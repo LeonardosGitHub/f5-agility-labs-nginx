@@ -103,73 +103,90 @@ Configuring the BIG-IP APM as an Authorization Server
    
 .. note::
    These next steps will guide you through creating a BIG-IP APM configuration to support Nginx Plus as a client
+   You will be using the BIG-IP that you previously opened in the browser
 
-1. Open your browser tab with the Firefox container from the 'Getting Started' lab section.
-
-2. Navigate to the URL below to login to the BIG-IP (you will need to type the URL below in to the Firefox container).
-
-URL:
-https://10.1.1.9
-
-.. note::
-   You'll likely get a TLS warning because we are using a self-signed certificate for management of the BIG-IP. You'll need to click 'Advanced' then 'Accept the Risk and Continue'. Then sign-in using:
+1. Open your browser tab with the BIG-IP GUI from the 'Getting Started' lab section and sign in using the BIG-IP username and password
 
 **Username: admin**
 **Password: f5r0x!**
 
-3. Sign in using the BIG-IP username and password above (if prompted, don't save the password).
+.. image:: ../images/mod1_apm_login.jpg
 
-4. You should be logged into the BIG-IP now, we will mainly be working in the Access tab in the left navigation column
+2. You should be logged into the BIG-IP now, we will mainly be working in the Access > Federation > OAuth Authorization Server section
 
-.. image:: ../images/mod1_apm_config_step2.jpg
+.. image:: ../images/mod1_apm_navigation.jpg
    
-Create scopes that will be used during the OIDC Connect communication
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Create scopes for the Oauth/OIDC communication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. note::
    You will be creating two scopes: profile and email
 
-5. Navigate to Access > Federation > OAuth Authorization Server > Scope > click the + button or click create
+3. Navigate to Access > Federation > OAuth Authorization Server > Scope > click the + button or click create
 
-.. image:: ../images/mod1_apm_config_scope1.jpg
+.. image:: ../images/mod1_apm_scope_create.jpg
 
-6. Configure the profile scope as follows, click repeat when finished
+4. Configure the profile scope as follows, click **repeat** when finished
 
 **Name: appworld2025_profile_scope**
+
 **Scope Name: profile**
 
-.. image:: ../images/mod1_apm_config_scope2.jpg
+.. image:: ../images/mod1_apm_scope_edit.jpg
 
-7. After clicking repeat above, enter in the information for the email scope:
+5. After clicking repeat above (or click create again), enter in the information for the email scope:
 
 **Name: appworld2025_email_scope**
+
 **Scope Name: email**
 
-8. Click Finished at the bottom of the screen
+6. Click Finished at the bottom of the screen
 
-Create claims that will be used during the OIDC Connect communication
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Create claims for the Oauth/OIDC communication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 .. note::
    You will be creating two claims: profile and email
 
-9. Navigate to Access > Federation > OAuth Authorization Server > Claim > click the + button or click create
+7. Navigate to Access > Federation > OAuth Authorization Server > Claim > click the + button or click create
 
-.. image:: ../images/mod1_apm_config_claim1.jpg
+.. image:: ../images/mod1_apm_claim_create.jpg
 
-10. Configure the profile claim as follows, click Save when finished
+8. Configure the profile claim as follows, click Save when finished
 
 **Name: appworld2025_profile_claim**
+
 **Claim Name: profile**
+
 **Claim Value: User profile information here**
 
-.. image:: ../images/mod1_apm_config_claim2.jpg
+.. image:: ../images/mod1_apm_claim_edit.jpg
 
-11. After clicking save above, repeat step 9 and 10 and use the values below
+9. After clicking save above, repeat step 9 and 10 and use the values below
+.. note::
+   See the Claim Value below, this will automatically populate the email address of the user
 
 **Name: appworld2025_email_claim**
 **Claim Name: email**
 **Claim Value: %{session.logon.last.logonname}@appworld2025.com**
 
-12. Click Save at the bottom of the screen
+10. Click Save at the bottom of the screen
+
+Create the client application (Nginx-Plus) for the Oauth/OIDC communication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+11. 
+
+Create the JWT Key configuration for the Oauth/OIDC communication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Create the OAuth profile for the Oauth/OIDC communication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Create Local User database for the Oauth/OIDC communication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Create Local User for the Oauth/OIDC communication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ============== OLD BELOW =========================
 Create a Keycloak client for NGINX Plus in the Keycloak GUI:
