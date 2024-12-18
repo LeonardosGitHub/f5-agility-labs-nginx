@@ -106,7 +106,7 @@ Creating self-signed certificates to be used by Nginx Plus
 **screenshot of output**
 
 .. image:: ../images/createSelfSigCertKey.jpg
-   :width: 400
+   :width: 800
 
 
 .. attention::
@@ -555,7 +555,7 @@ frontend.conf  openid_connect.js  openid_connect.server_conf  openid_connect_con
    ssl_certificate_key /etc/nginx/selfsigned.key;
    ssl_protocols TLSv1.2 TLSv1.3;
 
-.. image:: ../images/frontend_conf2.png
+.. image:: ../images/frontend_conf2.jpg
 	
 **save file and close**
 
