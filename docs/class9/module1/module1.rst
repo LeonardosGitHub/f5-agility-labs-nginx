@@ -309,7 +309,7 @@ Create Local User database for the Oauth/OIDC communication
 
 **Click OK**
 
-.. image:: ../images/mod1_apm_userDb_create.jpg
+.. image:: ../images/mod1_apm_userDb_edit.jpg
 
 23. Click Ok at the bottom of the screen
 
@@ -334,7 +334,7 @@ Create Local User for the Oauth/OIDC communication
 
 26. Click Ok at the bottom of the screen
 
-Create and edit access per-session profile for the Oauth/OIDC communication
+Create an Access per-session profile for the Oauth/OIDC communication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 27. Navigate to Access > Profiles/Policies > Access Profiles (Per-Session Policies) > click the + button or click Create
@@ -355,13 +355,75 @@ Create and edit access per-session profile for the Oauth/OIDC communication
 
 26. Click Finished at the bottom of the screen
 
+Edit Access profile per-session policy for the Oauth/OIDC communication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. note::
+   If you exited out of the Access profiles section, navigate to Access > Profiles/Policies > Access Profiles (Per-Session Policies)
+
+
+27. Once the Access profile is created you will see it in the list of Access Profiles.  Click on Edit under the tab Per-Session Policy.
+
+.. image:: ../images/mod1_apm_perSessionPolicy_create.jpg
+
+28. A new browser tab will open up that should look like this:
+
+.. image:: ../images/mod1_apm_perSessionPolicy_builder1.jpg
+
+29. Click the plus sign to the right of the Start button
+
+.. image:: ../images/mod1_apm_perSessionPolicy_builder2.jpg
+
+30. In the box that pops up, select Logon Page and click Add Item
+
+.. image:: ../images/mod1_apm_perSessionPolicy_builder3.jpg
+
+31. Keep all defaults and select Save
+
+.. image:: ../images/mod1_apm_perSessionPolicy_builder4.jpg
+
+32. Click the plus sign to the right of the Logon Page you just created
+
+.. image:: ../images/mod1_apm_perSessionPolicy_builder5.jpg
+
+33. Select the Authentication tab, select LocalDB Auth, click on Add Item
+
+.. image:: ../images/mod1_apm_perSessionPolicy_builder6.jpg
+
+34. In the field LocalDB Instance select /Common/appworld2025 and then click save
+
+.. image:: ../images/mod1_apm_perSessionPolicy_builder7.jpg
+
+35. Click the plus sign on the successful branch to the right of the LocalDb Auth
+
+.. image:: ../images/mod1_apm_perSessionPolicy_builder8.jpg
+
+36. Select the Authentication tab, select OAuth Authorization, click on Add Item
+
+.. image:: ../images/mod1_apm_perSessionPolicy_builder9.jpg
+
+37. Keep all defaults and select Save
+
+.. image:: ../images/mod1_apm_perSessionPolicy_builder10.jpg
+
+38. Click on the top Deny ending
+
+.. image:: ../images/mod1_apm_perSessionPolicy_builder11.jpg
+
+39. Select Allow then click Save
+
+.. image:: ../images/mod1_apm_perSessionPolicy_builder12.jpg
+
+40. Click on Apply Access Policy in the top left of the screen
+
+.. image:: ../images/mod1_apm_perSessionPolicy_builder13.jpg
+
 Create Virtual Server to support the Oauth/OIDC communication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. attention::
    
-   **Please do not close the BIG-IP browser tab!**	
+   **Please do not close the BIG-IP browser tab, you will use it again.**	
 
 
 Configure NGINX Plus as the OpenID Connect relying party
