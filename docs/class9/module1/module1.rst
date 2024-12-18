@@ -101,9 +101,11 @@ Create a clone of the nginx-openid-connect GitHub repository
 Configuring the BIG-IP APM as an Authorization Server
 =====================================================
 .. note::
-   These next steps will guide you through creating a BIG-IP APM configuration to support Nginx Plus as a client
+   These next steps will guide you through creating a BIG-IP APM configuration to support Nginx Plus as a client.
 
-   You will be using the BIG-IP that you previously opened in the browser
+   You will be using the BIG-IP that you previously opened in the browser.
+
+   For all objects keep default configurations except what is specified in this guide. 
    
 
 1. Open your browser tab with the BIG-IP GUI from the 'Getting Started' lab section and sign in using the BIG-IP username and password
@@ -115,7 +117,7 @@ Configuring the BIG-IP APM as an Authorization Server
 
 .. image:: ../images/mod1_apm_login.jpg
 
-2. You should be logged into the BIG-IP now, we will mainly be working in the Access > Federation > OAuth Authorization Server section
+2. You should be logged into the BIG-IP now, we start with the Access > Federation > OAuth Authorization Server section
 
 .. image:: ../images/mod1_apm_navigation.jpg
    
@@ -296,8 +298,65 @@ Create the OAuth profile for the Oauth/OIDC communication
 Create Local User database for the Oauth/OIDC communication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+21. Navigate to Access > Authentication > Local User DB > Instances > click the + button or click Create New Instance
+
+.. image:: ../images/mod1_apm_userDb_create.jpg
+
+22. Configure the User database as follows, click Ok when finished
+
+**Name: appworld2025**
+
+**Click OK**
+
+.. image:: ../images/mod1_apm_userDb_create.jpg
+
+23. Click Ok at the bottom of the screen
+
 Create Local User for the Oauth/OIDC communication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+24. Navigate to Access > Authentication > Local User DB > Users > click the + button or click Create New User
+
+.. image:: ../images/mod1_apm_user_create.jpg
+
+25. Configure a User as follows, click Save when finished
+
+**User Name: appworld2025**
+
+**Password: appworld2025**
+
+**Confirm Password: appworld2025**
+
+**Click OK**
+
+.. image:: ../images/mod1_apm_user_edit.jpg
+
+26. Click Ok at the bottom of the screen
+
+Create and edit access per-session profile for the Oauth/OIDC communication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+27. Navigate to Access > Profiles/Policies > Access Profiles (Per-Session Policies) > click the + button or click Create
+
+.. image:: ../images/mod1_apm_perSession_create.jpg
+
+**Name: appworld2025_access_profile**
+
+**Profile Type: LTM+APM**
+
+**OAuth Profile: appworld2025_oauth_profile**
+
+**Languages: select English (en)**
+
+**Click Finished**
+
+.. image:: ../images/mod1_apm_perSession_edit.jpg
+
+26. Click Finished at the bottom of the screen
+
+Create Virtual Server to support the Oauth/OIDC communication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 .. attention::
    
