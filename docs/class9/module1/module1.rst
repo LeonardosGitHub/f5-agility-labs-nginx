@@ -353,7 +353,7 @@ Create an Access per-session profile for the Oauth/OIDC communication
 
 .. image:: ../images/mod1_apm_perSession_edit.jpg
 
-26. Click Finished at the bottom of the screen
+28. Click Finished at the bottom of the screen
 
 Edit Access profile per-session policy for the Oauth/OIDC communication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -361,68 +361,68 @@ Edit Access profile per-session policy for the Oauth/OIDC communication
    If you exited out of the Access profiles section, navigate to Access > Profiles/Policies > Access Profiles (Per-Session Policies)
 
 
-27. Once the Access profile is created you will see it in the list of Access Profiles.  Click on Edit under the tab Per-Session Policy.
+29. Once the Access profile is created you will see it in the list of Access Profiles.  Click on Edit under the tab Per-Session Policy.
 
 .. image:: ../images/mod1_apm_perSessionPolicy_create.jpg
 
-28. A new browser tab will open up that should look like this:
+30. A new browser tab will open up that should look like this:
 
 .. image:: ../images/mod1_apm_perSessionPolicy_builder1.jpg
 
-29. Click the plus sign to the right of the Start button
+31. Click the plus sign to the right of the Start button
 
 .. image:: ../images/mod1_apm_perSessionPolicy_builder2.jpg
 
-30. In the box that pops up, select Logon Page and click Add Item
+32. In the box that pops up, select Logon Page and click Add Item
 
 .. image:: ../images/mod1_apm_perSessionPolicy_builder3.jpg
 
-31. Keep all defaults and select Save
+33. Keep all defaults and select Save
 
 .. image:: ../images/mod1_apm_perSessionPolicy_builder4.jpg
 
-32. Click the plus sign to the right of the Logon Page you just created
+34. Click the plus sign to the right of the Logon Page you just created
 
 .. image:: ../images/mod1_apm_perSessionPolicy_builder5.jpg
 
-33. Select the Authentication tab, select LocalDB Auth, click on Add Item
+35. Select the Authentication tab, select LocalDB Auth, click on Add Item
 
 .. image:: ../images/mod1_apm_perSessionPolicy_builder6.jpg
 
-34. In the field LocalDB Instance select /Common/appworld2025 and then click save
+36. In the field LocalDB Instance select /Common/appworld2025 and then click save
 
 .. image:: ../images/mod1_apm_perSessionPolicy_builder7.jpg
 
-35. Click the plus sign on the successful branch to the right of the LocalDb Auth
+37. Click the plus sign on the successful branch to the right of the LocalDb Auth
 
 .. image:: ../images/mod1_apm_perSessionPolicy_builder8.jpg
 
-36. Select the Authentication tab, select OAuth Authorization, click on Add Item
+38. Select the Authentication tab, select OAuth Authorization, click on Add Item
 
 .. image:: ../images/mod1_apm_perSessionPolicy_builder9.jpg
 
-37. Keep all defaults and select Save
+39. Keep all defaults and select Save
 
 .. image:: ../images/mod1_apm_perSessionPolicy_builder10.jpg
 
-38. Click on the top Deny ending
+40. Click on the top Deny ending
 
 .. image:: ../images/mod1_apm_perSessionPolicy_builder11.jpg
 
-39. Select Allow then click Save
+41. Select Allow then click Save
 
 .. image:: ../images/mod1_apm_perSessionPolicy_builder12.jpg
 
-40. Click on Apply Access Policy in the top left of the screen
+42. Click on Apply Access Policy in the top left of the screen
 
 .. image:: ../images/mod1_apm_perSessionPolicy_builder13.jpg
 
 Create Virtual Server to support the Oauth/OIDC communication
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-41. Return the tab where you have the BIG-IP GUI
+43. Return the tab where you have the BIG-IP GUI
 
-42. Navigate to Local Traffic > Virtual Servers > Virtual Server List > click the + button or click Create
+44. Navigate to Local Traffic > Virtual Servers > Virtual Server List > click the + button or click Create
 
 .. image:: ../images/mod1_apm_virtual_create.jpg
 
@@ -445,10 +445,10 @@ Create Virtual Server to support the Oauth/OIDC communication
 .. image:: ../images/mod1_apm_virtual_edit1.jpg
 .. image:: ../images/mod1_apm_virtual_edit2.jpg
 
-43. Click Finished at the bottom of the screen
+45. Click Finished at the bottom of the screen
 
 .. attention::
-   You are finished with configuring the BIG-IP
+   You are finished with configuring the BIG-IP.
 
    **Please do not close the BIG-IP browser tab, you will need to use it again.**	
 
