@@ -427,12 +427,19 @@ Create Virtual Server to support the Oauth/OIDC communication
 .. image:: ../images/mod1_apm_virtual_create.jpg
 
 **Name: appworld2025_vip**
+
 **Destination Address/Mask: 10.1.10.9/32**
+
 **Service Port: 443**
+
 **HTTP Profile (Client): http**
+
 **SSL Profile (Client): select clientssl**
+
 **SSL Profile (Server): select serverssl**
+
 **Access Profile: appworld2025_access_profile**
+
 **Click Finished**
 
 .. image:: ../images/mod1_apm_virtual_edit1.jpg
@@ -442,8 +449,8 @@ Create Virtual Server to support the Oauth/OIDC communication
 
 .. attention::
    You are finished with configuring the BIG-IP
-   
-   **Please do not close the BIG-IP browser tab, you will use it again.**	
+
+   **Please do not close the BIG-IP browser tab, you will need to use it again.**	
 
 
 Configure NGINX Plus as the OpenID Connect relying party
