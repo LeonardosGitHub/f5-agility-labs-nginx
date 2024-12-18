@@ -290,7 +290,8 @@ Create the OAuth profile for the Oauth/OIDC communication
 
 **Click Finished**
 
-.. image:: ../images/mod1_apm_jwtKey_edit.jpg
+.. image:: ../images/mod1_apm_oauthProfile_edit1.jpg
+.. image:: ../images/mod1_apm_oauthProfile_edit2.jpg
 
 20. Click Finished at the bottom of the screen
 
