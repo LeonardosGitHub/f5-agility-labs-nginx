@@ -94,6 +94,21 @@ Create a clone of the nginx-openid-connect GitHub repository
 .. image:: ../images/OPENID_Connect_verify.jpg
    :width: 400 
 
+Creating self-signed certificates to be used by Nginx Plus
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+7. Use the openssl command below to create the certificate and key
+
+.. code:: shell 
+
+	openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/selfsigned.key -out /etc/nginx/selfsigned.crt -subj "/C=US/ST=WA/L=Seattle/O=F5/OU=Appworld2025/CN=nginxdemo.f5lab.com"
+
+**screenshot of output**
+
+.. image:: ../images/createSelfSigCertKey.jpg
+   :width: 400
+
+
 .. attention::
    
    **Please do not close the UDF Shell browser tab!**	
@@ -530,9 +545,17 @@ frontend.conf  openid_connect.js  openid_connect.server_conf  openid_connect_con
 
 	nano frontend.conf
 
-6. Update the server to **10.1.1.4:8081** (this is our origin server).
+6. Update or add the configuration below:
+   
+   server 10.1.1.4:8081;
 
-.. image:: ../images/frontend_conf.png
+   listen 8010 ssl; # Use SSL/TLS in production
+   server_name nginxdemo.f5lab.com;
+   ssl_certificate /etc/nginx/selfsigned.crt;
+   ssl_certificate_key /etc/nginx/selfsigned.key;
+   ssl_protocols TLSv1.2 TLSv1.3;
+
+.. image:: ../images/frontend_conf2.png
 	
 **save file and close**
 
