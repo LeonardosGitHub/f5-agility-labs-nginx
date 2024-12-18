@@ -587,13 +587,19 @@ frontend.conf  openid_connect.js  openid_connect.server_conf  openid_connect_con
 
 	nano openid_connect_configuration.conf
 
-10. scroll down and modify the **$oidc_authz_extra_args** section, add the following above the default entry: nginxdemo.f5lab.com "token_content_type=jwt" ; look at the example below.  **Do not forget to add the quotation marks!**
+10. Scroll down and modify the **$oidc_authz_extra_args** section, add the following above the default entry: nginxdemo.f5lab.com "token_content_type=jwt"; - Look at the example below.  **Do not forget to add the quotation marks!**
 
 **screenshot of output**
 
 .. image:: ../images/nginx_openConnecConfig_extraArgs.jpg
 
-Then scroll down and modify the **$oidc_client_secret** from 0 to "yourclientsecret" from the earlier step, to look like the example below.  **Do not forget to add the quotation marks!**
+Then scroll down and modify the **$oidc_jwt_keyfile** section, add the following above the default entery: nnginxdemo.f5lab.com "https://10.1.10.9/f5-oauth2/v1/jwks"; - Look at the example below.  **Do not forget to add the quotation marks!**
+
+**screenshot of output**
+
+.. image:: ../images/nginx_openConnecConfig_keyFile.jpg
+
+Then scroll down and modify the **$oidc_client_secret** from 0 to "YOURCLIENTSECRET" from the earlier step, to look like the example below.  **Do not forget to add the quotation marks!**
 
 **screenshot of output**
 
