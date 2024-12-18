@@ -633,15 +633,23 @@ Now that everything is done lets test the config!  Please go back to the Firefox
 
 .. image:: ../images/clear_cookies.png
 
-2. While still in Firefox, open a new tab and type http://nginxdemo.f5lab.com:8010 into the browser and launch the page.
+2. While still in Firefox, open a new tab and type https://nginxdemo.f5lab.com:8010 into the browser and launch the page.
 
 .. image:: ../images/test_oidc.png
 
-Notice you'll be redirected to the IdP for login. 
+3. You will get a Warning message because we are using the self-signed certificate. Hit Advanced then Accept the Risk and Continue
 
-3. Once on the IdP page put in the credentials for the user you created. user01 with password appworld2024 (do not save the credentials, if prompted).
+.. image:: ../images/infra_firefox_testing_risk.jpg
 
-.. image:: ../images/auth_login.png
+Notice you'll be redirected to the IdP for login, the IdP in this case is the BIG-IP APM. 
+
+4. Once on the IdP page put in the credentials for the user you created. user01 with password appworld2025 (do not save the credentials, if prompted). Click Logon
+
+.. image:: ../images/infra_firefox_testing_idpUsername.jpg
+
+5. You'll now get a page that asks you if you authorize providing your profile information and email address. Click Authorize.
+
+.. image:: ../images/infra_firefox_testing_authorize.jpg
 
 You should now see the webservice! You've been logged in and the browser has been issued a JWT Token establishing identity!  You can view the token by clicking 'More tools' and 'Web Developer Tools' in the Firefox Settings menu, then selecting the 'Storage' tab and highlighting "auth_token".
 
