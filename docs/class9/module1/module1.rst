@@ -337,7 +337,7 @@ Create Local User for the Oauth/OIDC communication
 
 25. Configure a User as follows, click Save when finished
 
-**User Name: appworld2025**
+**User Name: user01**
 
 **Password: appworld2025**
 
@@ -593,7 +593,7 @@ frontend.conf  openid_connect.js  openid_connect.server_conf  openid_connect_con
 
 .. image:: ../images/nginx_openConnecConfig_extraArgs.jpg
 
-Then scroll down and modify the **$oidc_jwt_keyfile** section, add the following above the default entery: nnginxdemo.f5lab.com "https://10.1.10.9/f5-oauth2/v1/jwks"; - Look at the example below.  **Do not forget to add the quotation marks!**
+Then scroll down and modify the **$oidc_jwt_keyfile** section, add the following above the default entery: nginxdemo.f5lab.com "https://10.1.10.9/f5-oauth2/v1/jwks"; - Look at the example below.  **Do not forget to add the quotation marks!**
 
 **screenshot of output**
 
