@@ -548,18 +548,18 @@ frontend.conf  openid_connect.js  openid_connect.server_conf  openid_connect_con
 	nano frontend.conf
 
 6. Update or add to the configuration as shown below:
+
+.. code:: shell
    
-   **server 10.1.1.4:8081;**
+   server 10.1.1.4:8081;
 
-   **listen 8010 ssl; # Use SSL/TLS in production**
+.. code:: shell
 
-   **server_name nginxdemo.f5lab.com;**
-
-   **ssl_certificate /etc/nginx/selfsigned.crt;**
-
-   **ssl_certificate_key /etc/nginx/selfsigned.key;**
-
-   **ssl_protocols TLSv1.2 TLSv1.3;**
+   listen 8010 ssl; # Use SSL/TLS in production
+   server_name nginxdemo.f5lab.com;
+   ssl_certificate /etc/nginx/selfsigned.crt;
+   ssl_certificate_key /etc/nginx/selfsigned.key;
+   ssl_protocols TLSv1.2 TLSv1.3;
 
 .. image:: ../images/frontend_conf2.jpg
 	
