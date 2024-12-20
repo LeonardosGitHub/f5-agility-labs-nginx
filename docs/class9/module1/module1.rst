@@ -547,7 +547,7 @@ frontend.conf  openid_connect.js  openid_connect.server_conf  openid_connect_con
 
 	nano frontend.conf
 
-6. Update or add to the configuration as shown below:
+6. Update the upstream server and update the listen directive to add ssl capabilities, as shown in the screenshot below:
 
 .. code:: shell
    
@@ -563,7 +563,7 @@ frontend.conf  openid_connect.js  openid_connect.server_conf  openid_connect_con
 
 .. image:: ../images/frontend_conf2.jpg
 	
-**save file and close**
+**save file and close file**
 
 7. Using Nano edit the 'openid_connect.server_conf' file.
 
@@ -572,6 +572,10 @@ frontend.conf  openid_connect.js  openid_connect.server_conf  openid_connect_con
 	nano openid_connect.server_conf
 
 8. Update the resolver to use local host file as shown below. 
+
+.. code:: shell
+   
+   resolver 127.0.0.53; # For DNS lookup of IdP endpoints;
 
 .. image:: ../images/host_lookup.png
 
@@ -587,25 +591,33 @@ frontend.conf  openid_connect.js  openid_connect.server_conf  openid_connect_con
 
 	nano openid_connect_configuration.conf
 
-10. Scroll down and modify the **$oidc_authz_extra_args** section, add the following above the default entry: nginxdemo.f5lab.com "token_content_type=jwt"; - Look at the example below.  **Do not forget to add the quotation marks!**
+10. Scroll down and modify the **$oidc_authz_extra_args** section, add the following above the default entry. See screenshot for example.
+
+.. code:: shell
+
+   nginxdemo.f5lab.com "token_content_type=jwt";
 
 **screenshot of output**
 
 .. image:: ../images/nginx_openConnecConfig_extraArgs.jpg
 
-Then scroll down and modify the **$oidc_jwt_keyfile** section, add the following above the default entery: nginxdemo.f5lab.com "https://10.1.10.9/f5-oauth2/v1/jwks"; - Look at the example below.  **Do not forget to add the quotation marks!**
+Scroll down further and modify the **$oidc_jwt_keyfile** section, add the following above the default entery. See screenshot for example.
+
+.. code:: shell
+
+   nginxdemo.f5lab.com "https://10.1.10.9/f5-oauth2/v1/jwks";
 
 **screenshot of output**
 
 .. image:: ../images/nginx_openConnecConfig_keyFile.jpg
 
-Then scroll down and modify the **$oidc_client_secret** from 0 to "YOURCLIENTSECRET" from the earlier step, to look like the example below.  **Do not forget to add the quotation marks!**
+Scroll down further and modify the **$oidc_client_secret** from 0 to "YOURCLIENTSECRET" from the earlier step, See screenshot for example.  **Do not forget to add the quotation marks!**
 
 **screenshot of output**
 
 .. image:: ../images/save_secret.png
 
-Then scroll down further and add the keyword "**sync**" to the first three '**keyval_zone**' variables at the bottom of the file, so that it looks like below.
+Scroll down further and add the keyword "**sync**" to the first three '**keyval_zone**' variables at the bottom of the file, so that it looks like below.
 
 **screenshot of output**
 
